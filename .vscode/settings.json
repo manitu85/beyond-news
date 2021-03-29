@@ -6,4 +6,7 @@
     "titleBar.inactiveBackground": "#1f7dca"
   },
   "git.ignoreLimitWarning": true,
+  "cSpell.words": [
+    "Homeassistant"
+  ],
 }

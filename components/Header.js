@@ -1,7 +1,11 @@
 import NextLink from 'next/link';
 import React, { useState } from 'react';
 
-import { Box, Flex, Text, Button, Link } from '@chakra-ui/react';
+import { MdSettings } from 'react-icons/md';
+import { SiHomeassistant } from 'react-icons/si';
+import { GiNewspaper } from 'react-icons/gi';
+
+import { Box, Flex, Text, Button, Link, Icon } from '@chakra-ui/react';
 import Logo from './Logo';
 import { CloseIcon, MenuIcon } from './Icons';
 
@@ -33,7 +37,7 @@ const Header = (props) => {
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
-        {show ? <CloseIcon /> : <MenuIcon />}
+        {show ? <CloseIcon boxSize={6} /> : <MenuIcon boxSize={6} />}
       </Box>
 
       <Box
@@ -47,17 +51,16 @@ const Header = (props) => {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <NavLink href="/" name="home" />
-          <NavLink href="/news" name="news feed" />
-          <NavLink href="/how" name="How It works" isLast />
+          <NavLink href="/" name="home" icon={SiHomeassistant} />
+          <NavLink href="/news" name="news feed" icon={GiNewspaper} />
+          <NavLink href="/how" name="How It works" isLast icon={MdSettings} />
         </Flex>
       </Box>
     </Flex>
   );
 };
 
-function NavLink({ href = '/', name, isLast, ...rest }) {
-  // Must add passHref to Link from chakra-ui
+function NavLink({ href = '/', name, isLast, icon, ...rest }) {
   return (
     <Text
       as="li"
@@ -66,15 +69,14 @@ function NavLink({ href = '/', name, isLast, ...rest }) {
       display="block"
       fontWeight="bold"
       fontSize="14px"
+      _hover={{ color: 'primary.500' }}
+      _active={{ color: 'primary.500' }}
       {...rest}
     >
+      <Icon as={icon} mr={2} boxSize={4} transform="translateY(-1px)" />
+      {/* Must add passHref to Link from chakra-ui */}
       <NextLink href={href} passHref>
-        <Link
-          _hover={{ decoration: 'none', color: 'primary.500' }}
-          _active={{ color: 'primary.500' }}
-        >
-          {name}
-        </Link>
+        <Link _hover={{ decoration: 'none' }}>{name}</Link>
       </NextLink>
     </Text>
   );

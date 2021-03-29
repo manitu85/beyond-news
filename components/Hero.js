@@ -1,17 +1,9 @@
 import React from 'react';
 import NextImage from 'next/image';
 import PropTypes from 'prop-types';
-import { chakra } from '@chakra-ui/react';
+import { chakra, shouldForwardProp } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Heading,
-  Stack,
-  Text
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
 export default function Hero({
   title,
@@ -28,7 +20,7 @@ export default function Hero({
         justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
         direction={{ base: 'column-reverse', md: 'row' }}
         wrap="no-wrap"
-        minH="70vh"
+        minH="75vh"
         px={8}
         mb={16}
         {...rest}
@@ -56,6 +48,7 @@ export default function Hero({
             fontWeight="normal"
             lineHeight={1.5}
             textAlign={['center', 'center', 'left', 'left']}
+            my={2}
           >
             {subtitle}
           </Heading>
@@ -84,7 +77,6 @@ export default function Hero({
           mb={{ base: 12, md: 0 }}
           sx={{ '> div ': { overflow: 'visible !important' } }}
         >
-          {/* TODO: Make this change every X secs */}
           <StyledImage
             src={image}
             layout="intrinsic"
@@ -98,6 +90,7 @@ export default function Hero({
   );
 }
 
+// Chakra factory component with Next js Image component
 const HeroImage = chakra(NextImage, {
   baseStyle: {
     maxH: 120,
