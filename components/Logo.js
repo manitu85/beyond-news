@@ -6,7 +6,7 @@ export default function Logo(props) {
     <Flex align="center" {...props}>
       <Image src="/logo.png" w="40px" h="40px" mr={2} />
       <Text fontSize="xl" fontWeight="bold">
-        News Feed
+        Beyond News
       </Text>
     </Flex>
   );

@@ -1,11 +1,15 @@
 import React from 'react';
-import NextImage from 'next/image';
 import PropTypes from 'prop-types';
-import { chakra, shouldForwardProp } from '@chakra-ui/react';
-import styled from '@emotion/styled';
+import NextImage from 'next/image';
+
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { chakra, shouldForwardProp, useColorModeValue } from '@chakra-ui/react';
+import styled from '@emotion/styled';
 
 const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
+  const headingColor = useColorModeValue('primary.800', 'primary.300');
+  const textColor = useColorModeValue('primary.800', 'primary.100');
+
   return (
     <>
       <Flex
@@ -28,7 +32,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             size="xl"
             textTransform="capitalize"
             fontWeight="extrabold"
-            color="primary.800"
+            color={headingColor}
             textAlign={['center', 'center', 'left', 'left']}
           >
             {title}
@@ -36,7 +40,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
           <Heading
             as="h2"
             size="md"
-            color="primary.800"
+            color={textColor}
             opacity="0.8"
             fontWeight="normal"
             lineHeight={1.5}
@@ -59,7 +63,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             fontSize="xs"
             mt={2}
             textAlign="center"
-            color="primary.800"
+            color={headingColor}
             opacity="0.6"
           >
             No credit card required.
