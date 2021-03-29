@@ -66,7 +66,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             color={headingColor}
             opacity="0.6"
           >
-            No credit card required.
+            *No credit card required.
           </Text>
         </Stack>
         <Box

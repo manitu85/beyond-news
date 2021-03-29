@@ -8,10 +8,6 @@ import { SiHomeassistant } from 'react-icons/si';
 import { GiNewspaper } from 'react-icons/gi';
 import { CloseIcon, MenuIcon } from './Icons';
 
-// first way to use theme change
-const bgColor = { light: 'gray.300', dark: 'gray.600' };
-const textColor = { light: 'primary.700', dark: 'primary.100' };
-
 import {
   Box,
   Flex,
@@ -75,25 +71,29 @@ const Header = (props) => {
           <NavLink href="/news" name="news feed" icon={GiNewspaper} />
           <NavLink href="/how" name="How It works" isLast icon={MdSettings} />
           <IconButton
+            onClick={toggleColorMode}
+            icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            color={textColor}
             variant="outline"
             rounded="full"
             aria-label="theme-button"
-            icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            color={textColor}
             ml={4}
             _hover={{ background: 'none' }}
-            onClick={toggleColorMode}
           >
             Change Color Mode
           </IconButton>
         </Flex>
       </Box>
     </Flex>
+    /* prettier-ignore */
   );
 };
 
 function NavLink({ href = '/', name, isLast, icon, ...rest }) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
+
+  // first way to use theme change
+  const textColor = { light: 'primary.700', dark: 'primary.100' };
 
   return (
     <Text
@@ -110,7 +110,7 @@ function NavLink({ href = '/', name, isLast, icon, ...rest }) {
     >
       <Icon as={icon} mr={2} boxSize={4} transform="translateY(-1px)" />
       <NextLink href={href} passHref>
-        {/* Must add passHref to Link from chakra-ui */}
+        {/* Must pass "passHref" from NextLink to chakra-ui anchor link */}
         <Link _hover={{ decoration: 'none' }}>{name}</Link>
       </NextLink>
     </Text>
