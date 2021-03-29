@@ -5,14 +5,7 @@ import { chakra, shouldForwardProp } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
-export default function Hero({
-  title,
-  subtitle,
-  image,
-  ctaLink,
-  ctaText,
-  ...rest
-}) {
+const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
   return (
     <>
       <Flex
@@ -34,8 +27,8 @@ export default function Hero({
             as="h1"
             size="xl"
             textTransform="capitalize"
-            fontWeight="bold"
-            color="primary.700"
+            fontWeight="extrabold"
+            color="primary.800"
             textAlign={['center', 'center', 'left', 'left']}
           >
             {title}
@@ -83,18 +76,20 @@ export default function Hero({
             width={700}
             height={475}
             quality={100}
+            w="auto"
+            h="auto"
           />
         </Box>
       </Flex>
     </>
   );
-}
+};
 
 // Chakra factory component with Next js Image component
 const HeroImage = chakra(NextImage, {
   baseStyle: {
-    maxH: 120,
-    maxW: 120,
+    maxH: 475,
+    maxW: 700,
     rounded: '1rem'
   },
   shouldForwardProp: (prop) =>
@@ -125,3 +120,5 @@ Hero.defaultProps = {
   ctaText: 'Create your account now',
   ctaLink: '/signup'
 };
+
+export default Hero;
