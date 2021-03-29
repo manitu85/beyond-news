@@ -23,11 +23,13 @@ const Header = (props) => {
       color={['white', 'white', 'primary.700', 'primary.700']}
       {...props}
     >
-      <Flex align="center">
-        <Logo
-          w="100px"
-          color={['white', 'white', 'primary.500', 'primary.500']}
-        />
+      <Flex align="center" cursor="pointer">
+        <NextLink href="/">
+          <Logo
+            w="auto"
+            color={['white', 'white', 'primary.700', 'primary.700']}
+          />
+        </NextLink>
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={toggleMenu}>
@@ -39,6 +41,7 @@ const Header = (props) => {
         flexBasis={{ base: '100%', md: 'auto' }}
       >
         <Flex
+          as="ul"
           align="center"
           justify={['center', 'space-between', 'flex-end', 'flex-end']}
           direction={['column', 'row', 'row', 'row']}
@@ -46,28 +49,35 @@ const Header = (props) => {
         >
           <NavLink href="/" name="home" />
           <NavLink href="/news" name="news feed" />
-          <NavLink href="/how" name="How It works" />
-          <NavLink href="/pricing" name="pricing" />
+          <NavLink href="/how" name="How It works" isLast />
         </Flex>
       </Box>
     </Flex>
   );
 };
 
-export default Header;
-
 function NavLink({ href = '/', name, isLast, ...rest }) {
   // Must add passHref to Link from chakra-ui
   return (
     <Text
+      as="li"
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
       display="block"
+      fontWeight="bold"
+      fontSize="14px"
       {...rest}
     >
       <NextLink href={href} passHref>
-        <Link>{name}</Link>
+        <Link
+          _hover={{ decoration: 'none', color: 'primary.500' }}
+          _active={{ color: 'primary.500' }}
+        >
+          {name}
+        </Link>
       </NextLink>
     </Text>
   );
 }
+
+export default Header;
