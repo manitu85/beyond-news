@@ -24,6 +24,6 @@ const colors = {
   }
 };
 
-const customTheme = extendTheme({ colors, config });
+const customTheme = extendTheme({ config, colors });
 
 export default customTheme;

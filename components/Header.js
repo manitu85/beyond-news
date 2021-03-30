@@ -22,7 +22,8 @@ import {
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
-  // Second way to use theme change
+
+  // Second way to use color mode
   const bgColor = useColorModeValue('gray.300', 'gray.600');
   const textColor = useColorModeValue('primary.700', 'primary.100');
   const logoColor = useColorModeValue(
@@ -92,7 +93,7 @@ const Header = (props) => {
 function NavLink({ href = '/', name, isLast, icon, ...rest }) {
   const { colorMode } = useColorMode();
 
-  // first way to use theme change
+  // first way to use color mode
   const textColor = { light: 'primary.700', dark: 'primary.100' };
 
   return (
