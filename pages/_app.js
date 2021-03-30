@@ -4,6 +4,7 @@ import PageLayout from '@/components/Layout';
 import GlobalStyle from '@/styles/GlobalStyles';
 import customTheme from '@/styles/theme';
 
+// prettier-ignore
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={customTheme}>
@@ -12,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />;
       </PageLayout>
     </ChakraProvider>
-  );
+  )
 }
 
 export default MyApp;

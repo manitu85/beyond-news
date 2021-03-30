@@ -2,6 +2,7 @@ import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
 import customTheme from '@/styles/theme';
 
+// prettier-ignore
 export default class Document extends NextDocument {
   render() {
     return (
@@ -15,6 +16,6 @@ export default class Document extends NextDocument {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

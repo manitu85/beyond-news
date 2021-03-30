@@ -1,6 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import Header from './Header';
 
+// prettier-ignore
 export default function Layout(props) {
   return (
     <Flex
@@ -13,5 +14,5 @@ export default function Layout(props) {
       <Header />
       {props.children}
     </Flex>
-  );
+  )
 }

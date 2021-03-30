@@ -14,9 +14,8 @@ const GlobalStyle = ({ children }) => {
             scroll-behavior: smooth;
           }
           #__next {
-            /* display: flex;
-            flex-direction: column; */
             min-height: 100vh;
+            border-top: 5px solid #626cd5;
           }
         `}
       />

@@ -1,26 +1,19 @@
 import React from 'react';
-import { Box, Heading, Flex, Stack, Text, Image } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
+import ArticleCard from '@/components/ArticleCard';
 
 const NewsFeed = ({ page, articles }) => {
   return (
-    <div>
+    <Grid
+      templateColumns="1fr"
+      autoRows="auto"
+      rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
+      maxW="800px"
+    >
       {articles.map((article, idx) => (
-        <Stack key={`article-${idx}`} maxW="900px" my={12}>
-          <Heading as="h1" onClick={() => (window.location.href = article.url)}>
-            {article?.title}
-          </Heading>
-          <Text>{article.description}</Text>
-          {!!article.urlToImage && (
-            <Image
-              src={article?.urlToImage}
-              alt={article.author}
-              maxH="500px"
-              objectFit="cover"
-            />
-          )}
-        </Stack>
+        <ArticleCard key={`article-${idx}`} article={article} />
       ))}
-    </div>
+    </Grid>
   );
 };
 
@@ -37,11 +30,12 @@ export async function getServerSideProps(context) {
       }
     };
   }
-  // fetch function
   const fetcher = await fetch(
     `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${page}`,
     {
       headers: {
+        method: 'GET',
+        'Content-type': 'application/json',
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`
       }
     }
