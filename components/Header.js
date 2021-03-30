@@ -69,7 +69,7 @@ const Header = (props) => {
           pt={[4, 4, 0, 0]}
         >
           <NavLink href="/" name="about" icon={SiHomeassistant} />
-          <NavLink href="/news" name="news feed" icon={GiNewspaper} />
+          <NavLink href="/news/1" name="news feed" icon={GiNewspaper} />
           <NavLink href="/how" name="How It works" isLast icon={MdSettings} />
           <IconButton
             onClick={toggleColorMode}

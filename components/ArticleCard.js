@@ -16,7 +16,9 @@ const ArticleCard = ({ article }) => {
       px={{ base: '5vw', md: '3vw', lg: '1vw' }}
     >
       <LinkOverlay href={article?.url} isExternal>
-        <Heading as="h1">{article?.title}</Heading>
+        <Heading as="h1" fontSize={['xl', '2xl', '3xl', '4xl']}>
+          {article?.title}
+        </Heading>
       </LinkOverlay>
       <Text py="1rem">{article.description}</Text>
       <Box>
@@ -27,7 +29,7 @@ const ArticleCard = ({ article }) => {
             maxH="500px"
             objectFit="cover"
             h="100%"
-            w="100$"
+            w="100%"
           />
         )}
       </Box>
@@ -36,5 +38,3 @@ const ArticleCard = ({ article }) => {
 };
 
 export default ArticleCard;
-
-// onClick={() => (window.location.href = article.url)}

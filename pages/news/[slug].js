@@ -1,19 +1,23 @@
 import React from 'react';
-import { Grid } from '@chakra-ui/react';
+
+import { Container, Flex, Grid, Stack, Button } from '@chakra-ui/react';
 import ArticleCard from '@/components/ArticleCard';
+import Pagination from '@/components/Pagination';
 
 const NewsFeed = ({ page, articles }) => {
   return (
-    <Grid
-      templateColumns="1fr"
-      autoRows="auto"
-      rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
-      maxW="800px"
-    >
-      {articles.map((article, idx) => (
-        <ArticleCard key={`article-${idx}`} article={article} />
-      ))}
-    </Grid>
+    <Container maxW="800px">
+      <Grid
+        templateColumns="1fr"
+        autoRows="auto"
+        rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
+      >
+        {articles.map((article, idx) => (
+          <ArticleCard key={`article-${idx}`} article={article} />
+        ))}
+      </Grid>
+      <Pagination page={page} />
+    </Container>
   );
 };
 
@@ -34,7 +38,6 @@ export async function getServerSideProps(context) {
     `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${page}`,
     {
       headers: {
-        method: 'GET',
         'Content-type': 'application/json',
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`
       }
