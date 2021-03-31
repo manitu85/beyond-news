@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import useSWR from 'swr';
 import { fetcher } from 'utils/fetcher';
 
-import { Container, Flex, Grid, Stack, Button } from '@chakra-ui/react';
+import { Container, Grid } from '@chakra-ui/react';
 import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
 import ArticleCardSkeleton from '@/components/ArticleCardSkeleton';
@@ -13,7 +13,6 @@ const NewsFeed = ({ page, articles }) => {
     initialData: articles
   });
 
-  // should be loading skeleton, but doesn't work
   if (!data) {
     return <ArticleCardSkeleton />;
   }

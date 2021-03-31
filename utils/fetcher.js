@@ -3,8 +3,8 @@ export const fetcher = async url => {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
-      credentials: 'same-origin'
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`
+      // credentials: 'same-origin'
     }
   });
   return res.json();

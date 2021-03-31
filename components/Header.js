@@ -70,8 +70,8 @@ const Header = props => {
         >
           <NavLink href="/" name="About" icon={SiHomeassistant} />
           <NavLink href="/news/1" name="News Feed" icon={GiNewspaper} />
-          <NavLink href="/how" name="How It works" icon={MdSettings} isLast />
-          <NavLink href="/terms" name="Terms" icon={GiNewspaper} />
+          <NavLink href="/how" name="How It works" icon={MdSettings} />
+          <NavLink href="/terms" name="Terms" icon={GiNewspaper} isLast />
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
