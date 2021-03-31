@@ -19,11 +19,11 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 
-const Header = (props) => {
+const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
 
-  // Second way to use color mode
+  // First way to use color mode
   const bgColor = useColorModeValue('gray.300', 'gray.600');
   const textColor = useColorModeValue('primary.700', 'primary.100');
   const logoColor = useColorModeValue(
@@ -68,9 +68,10 @@ const Header = (props) => {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <NavLink href="/" name="about" icon={SiHomeassistant} />
-          <NavLink href="/news/1" name="news feed" icon={GiNewspaper} />
-          <NavLink href="/how" name="How It works" isLast icon={MdSettings} />
+          <NavLink href="/" name="About" icon={SiHomeassistant} />
+          <NavLink href="/news/1" name="News Feed" icon={GiNewspaper} />
+          <NavLink href="/how" name="How It works" icon={MdSettings} isLast />
+          <NavLink href="/terms" name="Terms" icon={GiNewspaper} />
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
@@ -86,14 +87,13 @@ const Header = (props) => {
         </Flex>
       </Box>
     </Flex>
-    /* prettier-ignore */
   );
 };
 
 function NavLink({ href = '/', name, isLast, icon, ...rest }) {
   const { colorMode } = useColorMode();
 
-  // first way to use color mode
+  // Second way to use color mode
   const textColor = { light: 'primary.700', dark: 'primary.100' };
 
   return (
@@ -111,7 +111,6 @@ function NavLink({ href = '/', name, isLast, icon, ...rest }) {
     >
       <Icon as={icon} mr={2} boxSize={4} transform="translateY(-1px)" />
       <NextLink href={href} passHref>
-        {/* Must pass "passHref" from NextLink to chakra-ui anchor link */}
         <Link _hover={{ decoration: 'none' }}>{name}</Link>
       </NextLink>
     </Text>

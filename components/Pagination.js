@@ -1,9 +1,9 @@
 import { Stack, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import routeToTop from 'utils/routeToTop';
 
 import { MdArrowForward, MdArrowBack } from 'react-icons/md';
 import styles from '@/styles/pagination.module.css';
-import routeToTop from 'utils/routeToTop';
 
 const Pagination = ({ page }) => {
   const router = useRouter();

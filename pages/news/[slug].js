@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useSWR from 'swr';
+import { fetcher } from 'utils/fetcher';
 
 import { Container, Flex, Grid, Stack, Button } from '@chakra-ui/react';
 import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
+import ArticleCardSkeleton from '@/components/ArticleCardSkeleton';
 
 const NewsFeed = ({ page, articles }) => {
+  // cached articles on client side
+  const { data } = useSWR(`/news/${page}`, fetcher, {
+    initialData: articles
+  });
+
+  // should be loading skeleton, but doesn't work
+  if (!data) {
+    return <ArticleCardSkeleton />;
+  }
+
   return (
     <Container maxW="800px">
       <Grid
@@ -12,9 +25,10 @@ const NewsFeed = ({ page, articles }) => {
         autoRows="auto"
         rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
       >
-        {articles.map((article, idx) => (
-          <ArticleCard key={`article-${idx}`} article={article} />
-        ))}
+        {data &&
+          data.map((article, idx) => (
+            <ArticleCard key={`article-${idx}`} article={article} />
+          ))}
       </Grid>
       <Pagination page={page} />
     </Container>
@@ -23,8 +37,12 @@ const NewsFeed = ({ page, articles }) => {
 
 export default NewsFeed;
 
-export async function getServerSideProps(context) {
-  const page = Number.parseInt(context.query.slug);
+export async function getServerSideProps({ query: { slug } }) {
+  const page = Number.parseInt(slug);
+
+  const { articles } = await fetcher(
+    `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${page}`
+  );
 
   if (!page || page < 1 || page > 5) {
     return {
@@ -34,17 +52,6 @@ export async function getServerSideProps(context) {
       }
     };
   }
-  const fetcher = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${page}`,
-    {
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`
-      }
-    }
-  );
-
-  const { articles } = await fetcher.json();
 
   return {
     props: {
