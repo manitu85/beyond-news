@@ -43,7 +43,7 @@ const Header = props => {
       textTransform="uppercase"
       mb={8}
       p={8}
-      bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
+      bg={['secondary.700', 'primary.700', 'transparent', 'transparent']}
       color={['white', 'white', 'primary.700', 'primary.700']}
       {...props}
     >

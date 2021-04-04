@@ -14,7 +14,7 @@ const HeroImage = chakra(NextImage, {
     shadow: `rgba(0, 180, 216, 0.2) 5px 5px, rgba(72, 202, 228, 0.2) 10px 10px,
     rgba(144, 239, 255, 0.2) 15px 15px`
   },
-  shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop)
+  shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
 });
 
 const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
@@ -42,7 +42,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             as="h1"
             size="xl"
             textTransform="capitalize"
-            fontWeight="extrabold"
+            fontWeight="bold"
             color={headingColor}
             textAlign={['center', 'center', 'left', 'left']}
           >
@@ -116,7 +116,7 @@ Hero.propTypes = {
 };
 
 Hero.defaultProps = {
-  title: 'Next js app page with Chakra UI',
+  title: 'Next js app page with Chakra UI & MDX',
   subtitle:
     'Retrieve articles and breaking news headlines from news sources and blogs across the web with NEWS API',
   image: '/news.jpg',

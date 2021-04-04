@@ -40,7 +40,7 @@ export async function getServerSideProps({ query: { slug } }) {
   const page = Number.parseInt(slug);
 
   const { articles } = await fetcher(
-    `https://newsapi.org/v2/top-headlines?country=rs&pageSize=5&page=${page}`
+    `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${page}`
   );
 
   if (!page || page < 1 || page > 5) {
