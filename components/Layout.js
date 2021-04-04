@@ -7,7 +7,7 @@ export default function Layout(props) {
     <Flex
       direction="column"
       align="center"
-      maxW={{ xl: '1200px' }}
+      maxW={{ xl: '900px' }}
       m="0 auto"
       {...props}
     >
