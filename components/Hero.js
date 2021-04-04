@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NextImage from 'next/image';
+import { NextSeo } from 'next-seo';
 
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { chakra, shouldForwardProp, useColorModeValue } from '@chakra-ui/react';
@@ -23,6 +24,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
 
   return (
     <>
+      <NextSeo title="Home page" />
       <Flex
         align="center"
         justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
