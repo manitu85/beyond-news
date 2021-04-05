@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import useSWR from 'swr';
+import { motion } from 'framer-motion';
 import { fetcher } from 'utils/fetcher';
+import { routeContainer } from '@/styles/motion.variants';
 
 import { Container, Grid } from '@chakra-ui/react';
 import ArticleCard from '@/components/ArticleCard';
@@ -17,20 +19,28 @@ const NewsFeed = ({ page, articles }) => {
     return <ArticleCardSkeleton />;
   }
 
+  // console.log('ARTICLES:', articles);
   return (
-    <Container maxW="800px">
-      <Grid
-        templateColumns="1fr"
-        autoRows="auto"
-        rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
-      >
-        {data &&
-          data.map((article, idx) => (
-            <ArticleCard key={`article-${idx}`} article={article} />
-          ))}
-      </Grid>
-      <Pagination page={page} />
-    </Container>
+    <motion.div
+      variants={routeContainer}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <Container maxW="800px">
+        <Grid
+          templateColumns="1fr"
+          autoRows="auto"
+          rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
+        >
+          {data &&
+            data.map((article, idx) => (
+              <ArticleCard key={`article-${idx}`} article={article} />
+            ))}
+        </Grid>
+        <Pagination page={page} />
+      </Container>
+    </motion.div>
   );
 };
 

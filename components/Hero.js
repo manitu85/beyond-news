@@ -7,7 +7,7 @@ import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { chakra, shouldForwardProp, useColorModeValue } from '@chakra-ui/react';
 
 // Chakra factory component with Next js Image Component
-const HeroImage = chakra(NextImage, {
+const ChakraNextImage = chakra(NextImage, {
   baseStyle: {
     maxH: 475,
     maxW: 700,
@@ -87,7 +87,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
           mb={{ base: 12, md: 0 }}
           sx={{ '> div ': { overflow: 'visible !important' } }}
         >
-          <HeroImage
+          <ChakraNextImage
             src={image}
             layout="intrinsic"
             width={700}
@@ -101,13 +101,6 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
     </>
   );
 };
-
-// const StyledImage = styled(HeroImage)`
-//   /* box-shadow: rgba(0, 180, 216, 0.6) 0px 1px 0px,
-//     rgba(72, 202, 228, 0.5) 0px 8px 24px, rgba(72, 202, 228, 0.4) 0px 16px 48px; */
-//   /* box-shadow: rgba(0, 180, 216, 0.2) 5px 5px, rgba(72, 202, 228, 0.2) 10px 10px,
-//     rgba(144, 239, 255, 0.2) 15px 15px; */
-// `;
 
 Hero.propTypes = {
   title: PropTypes.string,

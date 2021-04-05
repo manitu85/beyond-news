@@ -26,7 +26,7 @@ const ArticleCard = ({ article }) => {
           <Image
             src={article?.urlToImage}
             alt={article?.author}
-            maxH="500px"
+            maxH="475px"
             objectFit="cover"
             h="100%"
             w="100%"
