@@ -1,5 +1,6 @@
-import NextLink from 'next/link';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import NextLink from 'next/link';
 
 import Logo from './Logo';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -7,6 +8,7 @@ import { MdSettings } from 'react-icons/md';
 import { SiHomeassistant } from 'react-icons/si';
 import { GiNewspaper } from 'react-icons/gi';
 import { CloseIcon, MenuIcon } from './Icons';
+import styles from '@/styles/navigation.module.css';
 
 import {
   Box,
@@ -22,6 +24,7 @@ import {
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
+  const router = useRouter();
 
   // First way to use color mode
   const bgColor = useColorModeValue('gray.300', 'gray.600');
@@ -68,10 +71,30 @@ const Header = props => {
           direction={['column', 'row', 'row', 'row']}
           pt={[4, 4, 0, 0]}
         >
-          <NavLink href="/" name="About" icon={SiHomeassistant} />
-          <NavLink href="/news/1" name="News Feed" icon={GiNewspaper} />
-          <NavLink href="/how" name="How It works" icon={MdSettings} />
-          <NavLink href="/terms" name="Terms" icon={GiNewspaper} isLast />
+          <NavLink
+            href="/"
+            name="About"
+            icon={SiHomeassistant}
+            className={router.pathname === '/' ? styles.selected : ''}
+          />
+          <NavLink
+            href="/news/1"
+            name="News Feed"
+            icon={GiNewspaper}
+            className={router.pathname === '/news/1' ? styles.selected : ''}
+          />
+          <NavLink
+            href="/how"
+            name="How It works"
+            icon={MdSettings}
+            className={router.pathname === '/how' ? styles.selected : ''}
+          />
+          <NavLink
+            href="/terms"
+            name="Terms"
+            icon={GiNewspaper}
+            className={router.pathname === '/terms' ? styles.selected : ''}
+          />
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
@@ -81,6 +104,7 @@ const Header = props => {
             aria-label="theme-button"
             ml={4}
             _hover={{ background: 'none' }}
+            isLast
           >
             Change Color Mode
           </IconButton>
@@ -90,9 +114,8 @@ const Header = props => {
   );
 };
 
-function NavLink({ href = '/', name, isLast, icon, ...rest }) {
+function NavLink({ href = '/', name, icon, isLast, ...rest }) {
   const { colorMode } = useColorMode();
-
   // Second way to use color mode
   const textColor = { light: 'primary.700', dark: 'primary.100' };
 

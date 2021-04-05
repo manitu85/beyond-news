@@ -1,5 +1,3 @@
-import { resolveHref } from 'next/dist/next-server/lib/router/router';
-
 export const fetcher = async url => {
   const res = await fetch(url, {
     method: 'GET',

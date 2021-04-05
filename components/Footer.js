@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import routeToTop from 'utils/routeToTop';
 import { Link, Flex } from '@chakra-ui/react';
 
-const Footer = () => {
+const Footer = props => {
   return (
     <Flex mb={8} mt={8} justify="center">
       <NextLink href="/" passHref>

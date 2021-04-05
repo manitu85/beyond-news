@@ -10,7 +10,7 @@ import customTheme from '@/styles/theme';
 
 import SEO from '../next-seo.config';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={customTheme}>
       <MDXProvider components={MDXComponents}>
@@ -24,4 +24,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;
