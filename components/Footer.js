@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import routeToTop from 'utils/routeToTop';
 import { Link, Flex } from '@chakra-ui/react';
 
 const Footer = props => {

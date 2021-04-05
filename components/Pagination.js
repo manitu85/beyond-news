@@ -11,25 +11,25 @@ const Pagination = ({ page }) => {
   return (
     <Stack direction="row" spacing={2} py={6} justify="center">
       <Button
+        className={page == 1 ? styles.isDisabled : styles.isActive}
         leftIcon={<MdArrowBack />}
         colorScheme="primary"
         variant="solid"
         onClick={() => {
           if (page > 1) return routeToTop(router, `/news/${page - 1}`);
         }}
-        className={page == 1 ? styles.isDisabled : styles.isActive}
       >
         Previous Page
       </Button>
       <Button align="center">{page}</Button>
       <Button
+        className={page == 5 ? styles.isDisabled : styles.isActive}
         rightIcon={<MdArrowForward />}
         colorScheme="primary"
         variant="outline"
         onClick={() => {
           if (page < 5) return routeToTop(router, `/news/${page + 1}`);
         }}
-        className={page == 5 ? styles.isDisabled : styles.isActive}
       >
         Next Page
       </Button>

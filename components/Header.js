@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-
-import Logo from './Logo';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { MdSettings } from 'react-icons/md';
 import { SiHomeassistant } from 'react-icons/si';
 import { GiNewspaper } from 'react-icons/gi';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+
+import NavLink from './HeaderLink';
+import Logo from './Logo';
 import { CloseIcon, MenuIcon } from './Icons';
 import styles from '@/styles/navigation.module.css';
 
 import {
   Box,
   Flex,
-  Text,
   IconButton,
-  Link,
-  Icon,
   useColorMode,
   useColorModeValue
 } from '@chakra-ui/react';
@@ -26,9 +24,14 @@ const Header = props => {
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
 
-  // First way to use color mode
-  const bgColor = useColorModeValue('gray.300', 'gray.600');
-  const textColor = useColorModeValue('primary.700', 'primary.100');
+  const textColor = useColorModeValue(
+    ['primary.100', 'primary.100', 'primary.700'],
+    'primary.100'
+  );
+  const bgColor = useColorModeValue(
+    ['primary.400', 'primary.400', 'transparent', 'transparent'],
+    ['primary.800', 'primary.800', 'transparent', 'transparent']
+  );
   const logoColor = useColorModeValue(
     ['white', 'white', 'primary.700', 'primary.700'],
     ['white', 'white', 'primary.200', 'primary.200']
@@ -46,8 +49,8 @@ const Header = props => {
       textTransform="uppercase"
       mb={8}
       p={8}
-      bg={['secondary.700', 'primary.700', 'transparent', 'transparent']}
-      color={['white', 'white', 'primary.700', 'primary.700']}
+      bg={bgColor}
+      color={['primary.100', 'primary.100', 'primary.700', 'primary.700']}
       {...props}
     >
       <Flex align="center" cursor="pointer">
@@ -113,31 +116,5 @@ const Header = props => {
     </Flex>
   );
 };
-
-function NavLink({ href = '/', name, icon, isLast, ...rest }) {
-  const { colorMode } = useColorMode();
-  // Second way to use color mode
-  const textColor = { light: 'primary.700', dark: 'primary.100' };
-
-  return (
-    <Text
-      as="li"
-      mb={{ base: isLast ? 0 : 8, sm: 0 }}
-      mr={{ base: 0, sm: isLast ? 0 : 8 }}
-      display="block"
-      fontWeight="bold"
-      fontSize="14px"
-      color={textColor[colorMode]}
-      _hover={{ color: 'primary.500' }}
-      _active={{ color: 'primary.500' }}
-      {...rest}
-    >
-      <Icon as={icon} mr={2} boxSize={4} transform="translateY(-1px)" />
-      <NextLink href={href} passHref>
-        <Link _hover={{ decoration: 'none' }}>{name}</Link>
-      </NextLink>
-    </Text>
-  );
-}
 
 export default Header;
