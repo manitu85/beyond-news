@@ -1,7 +1,6 @@
 import {
   Input,
   Stack,
-  Icon,
   InputGroup,
   InputLeftElement,
   Button,

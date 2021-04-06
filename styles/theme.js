@@ -5,6 +5,19 @@ const config = {
   useSystemColorMode: false
 };
 
+const fonts = {
+  fonts: {
+    heading: '"Inter", sans-serif',
+    body: '"Open Sans", sans-serif'
+  },
+  fontWeights: {
+    normal: 400,
+    medium: 600,
+    bold: 700,
+    extrabold: 800
+  }
+};
+
 const colors = {
   primary: {
     100: '#E5FCF1',
@@ -15,7 +28,7 @@ const colors = {
     600: '#0096c7ff',
     700: '#0077b6ff',
     800: '#023e8aff',
-    900: '#03045eff'
+    900: '#03045eff '
   },
   secondary: {
     100: '#3ad9c9',
@@ -24,6 +37,6 @@ const colors = {
   }
 };
 
-const customTheme = extendTheme({ config, colors });
+const customTheme = extendTheme({ config, fonts, colors });
 
 export default customTheme;

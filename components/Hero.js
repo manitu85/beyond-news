@@ -117,7 +117,7 @@ Hero.propTypes = {
 };
 
 Hero.defaultProps = {
-  title: 'Next js app page with Chakra UI & MDX',
+  title: 'Next js page with Chakra UI & MDX',
   subtitle:
     'Retrieve articles and breaking news headlines from news sources and blogs across the web with NEWS API',
   image: '/news.jpg',
