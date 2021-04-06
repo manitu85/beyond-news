@@ -6,17 +6,17 @@ const description =
 const SEO = {
   titleTemplate,
   description,
-  canonical: 'https://newsfeedus.vercel.app/',
+  canonical: 'https://beyond-news.vercel.app/',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://newsfeedus.vercel.app/',
-    titleTemplate,
+    url: 'https://beyond-news.vercel.app/',
+    title,
     description,
     site_name: 'Beyond News',
     images: [
       {
-        url: 'https://newsfeedus.vercel.app//og.png',
+        url: 'https://beyond-news.vercel.app//og.png',
         alt: title,
         width: 1280,
         height: 720

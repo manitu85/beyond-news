@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 
 const Header = props => {
-  const router = useRouter();
+  const { router } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
 

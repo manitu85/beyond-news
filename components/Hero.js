@@ -26,7 +26,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
 
   return (
     <>
-      <NextSeo title="Home page" />
+      <NextSeo title="Home" />
       <Flex
         as="main"
         align="center"
