@@ -17,6 +17,9 @@ const GlobalStyle = ({ children }) => {
             min-height: 100vh;
             border-top: 5px solid #626cd5;
           }
+          body {
+            font-family: 'Open Sans';
+          }
         `}
       />
       {children}

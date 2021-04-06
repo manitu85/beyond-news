@@ -7,10 +7,11 @@ const config = {
 
 const fonts = {
   fonts: {
-    heading: '"Inter", sans-serif',
-    body: '"Open Sans", sans-serif'
+    body: '"Open Sans", sans-serif',
+    heading: '"Inter", sans-serif'
   },
   fontWeights: {
+    light: 300,
     normal: 400,
     medium: 600,
     bold: 700,

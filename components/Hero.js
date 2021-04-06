@@ -48,6 +48,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             size="xl"
             textTransform="capitalize"
             fontWeight="bold"
+            fontFamily="Inter"
             color={headingColor}
             textAlign={['center', 'center', 'left', 'left']}
           >
