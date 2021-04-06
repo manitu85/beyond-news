@@ -21,8 +21,11 @@ const ChakraNextImage = chakra(NextImage, {
 
 const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
   const router = useRouter();
-  const headingColor = useColorModeValue('primary.800', 'primary.300');
   const textColor = useColorModeValue('primary.800', 'primary.100');
+  const headingColor = useColorModeValue(
+    'linear(to-l, #7928CA,#023e8aff)',
+    'linear(to-l, #626cd5,#ade8f4ff)'
+  );
 
   return (
     <>
@@ -49,7 +52,9 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             textTransform="capitalize"
             fontWeight="bold"
             fontFamily="Inter"
-            color={headingColor}
+            /* color={headingColor} */
+            bgGradient={headingColor}
+            bgClip="text"
             textAlign={['center', 'center', 'left', 'left']}
           >
             {title}
