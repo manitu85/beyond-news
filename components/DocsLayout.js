@@ -1,18 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import { Box } from '@chakra-ui/react';
-import { routeContainer } from '@/styles/motion.variants';
+import { MotionNextRouter, motionProps } from '@/components/MotionNextRouter';
 
 const DocsLayout = ({ children, title }) => (
   <>
     <NextSeo title={title} />
-    <motion.div
-      variants={routeContainer}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
+    <MotionNextRouter {...motionProps}>
       <Box
         as="main"
         maxW="800px"
@@ -23,7 +17,7 @@ const DocsLayout = ({ children, title }) => (
       >
         {children}
       </Box>
-    </motion.div>
+    </MotionNextRouter>
   </>
 );
 

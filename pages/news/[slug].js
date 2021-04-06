@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useSWR from 'swr';
-import { motion } from 'framer-motion';
 import { fetcher } from 'utils/fetcher';
-import { routeContainer } from '@/styles/motion.variants';
+import { MotionNextRouter, motionProps } from '@/components/MotionNextRouter';
 
 import { Container, Grid } from '@chakra-ui/react';
 import ArticleCard from '@/components/ArticleCard';
@@ -21,12 +20,7 @@ const NewsFeed = ({ page, articles }) => {
 
   // console.log('ARTICLES:', articles);
   return (
-    <motion.div
-      variants={routeContainer}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
+    <MotionNextRouter {...motionProps}>
       <Container maxW="800px">
         <Grid
           templateColumns="1fr"
@@ -40,7 +34,7 @@ const NewsFeed = ({ page, articles }) => {
         </Grid>
         <Pagination page={page} />
       </Container>
-    </motion.div>
+    </MotionNextRouter>
   );
 };
 

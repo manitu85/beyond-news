@@ -9,15 +9,10 @@ import PageLayout from '@/components/Layout';
 import GlobalStyle from '@/styles/GlobalStyles';
 import customTheme from '@/styles/theme';
 
+import { handleExitComplete } from 'utils/handleExitComplete';
 import SEO from '../next-seo.config';
 
-function App({ Component, pageProps }) {
-  const handleExitComplete = () => {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0 });
-    }
-  };
-
+function App({ Component, pageProps, router }) {
   return (
     <ChakraProvider theme={customTheme}>
       <MDXProvider components={MDXComponents}>
@@ -25,7 +20,7 @@ function App({ Component, pageProps }) {
           <DefaultSeo {...SEO} />
           <GlobalStyle />
           <AnimatePresence exitBeforeEnter exitComplete={handleExitComplete}>
-            <Component {...pageProps} />;
+            <Component {...pageProps} key={router.pathname} />;
           </AnimatePresence>
         </PageLayout>
       </MDXProvider>

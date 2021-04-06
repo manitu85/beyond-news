@@ -26,6 +26,7 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
     <>
       <NextSeo title="Home page" />
       <Flex
+        as="main"
         align="center"
         justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
         direction={{ base: 'column-reverse', md: 'row' }}

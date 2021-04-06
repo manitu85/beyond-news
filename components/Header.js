@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { MdSettings } from 'react-icons/md';
 import { SiHomeassistant } from 'react-icons/si';
 import { GiNewspaper } from 'react-icons/gi';
+import { BiLogInCircle } from 'react-icons/bi';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 import NavLink from './HeaderLink';
@@ -93,11 +94,17 @@ const Header = props => {
             className={router.pathname === '/how' ? styles.selected : ''}
           />
           <NavLink
+            href="/register"
+            name="Register"
+            icon={BiLogInCircle}
+            className={router.pathname === '/register' ? styles.selected : ''}
+          />
+          {/* <NavLink
             href="/terms"
             name="Terms"
             icon={GiNewspaper}
             className={router.pathname === '/terms' ? styles.selected : ''}
-          />
+          /> */}
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
