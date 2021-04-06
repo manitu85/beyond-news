@@ -1,12 +1,14 @@
 import React from 'react';
 import useSWR from 'swr';
-import { fetcher } from 'utils/fetcher';
-import { MotionNextRouter, motionProps } from '@/components/MotionNextRouter';
-
+import { NextSeo } from 'next-seo';
 import { Container, Grid } from '@chakra-ui/react';
+
 import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
 import ArticleCardSkeleton from '@/components/ArticleCardSkeleton';
+
+import { MotionNextRouter, motionProps } from '@/components/MotionNextRouter';
+import { fetcher } from 'utils/fetcher';
 
 const NewsFeed = ({ page, articles }) => {
   // cached articles on client side
@@ -20,21 +22,24 @@ const NewsFeed = ({ page, articles }) => {
 
   // console.log('ARTICLES:', articles);
   return (
-    <MotionNextRouter {...motionProps}>
-      <Container maxW="800px">
-        <Grid
-          templateColumns="1fr"
-          autoRows="auto"
-          rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
-        >
-          {data &&
-            data.map((article, idx) => (
-              <ArticleCard key={`article-${idx}`} article={article} />
-            ))}
-        </Grid>
-        <Pagination page={page} />
-      </Container>
-    </MotionNextRouter>
+    <>
+      <NextSeo title="News Feed" />
+      <MotionNextRouter {...motionProps}>
+        <Container maxW="800px">
+          <Grid
+            templateColumns="1fr"
+            autoRows="auto"
+            rowGap={{ base: '2rem', md: '3rem', lg: '4rem' }}
+          >
+            {data &&
+              data.map((article, idx) => (
+                <ArticleCard key={`article-${idx}`} article={article} />
+              ))}
+          </Grid>
+          <Pagination page={page} />
+        </Container>
+      </MotionNextRouter>
+    </>
   );
 };
 

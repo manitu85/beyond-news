@@ -21,9 +21,9 @@ import {
 } from '@chakra-ui/react';
 
 const Header = props => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
-  const router = useRouter();
 
   const textColor = useColorModeValue(
     ['primary.100', 'primary.100', 'primary.700'],
@@ -99,12 +99,6 @@ const Header = props => {
             icon={BiLogInCircle}
             className={router.pathname === '/register' ? styles.selected : ''}
           />
-          {/* <NavLink
-            href="/terms"
-            name="Terms"
-            icon={GiNewspaper}
-            className={router.pathname === '/terms' ? styles.selected : ''}
-          /> */}
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}

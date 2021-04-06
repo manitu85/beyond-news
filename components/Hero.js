@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NextImage from 'next/image';
 import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import { chakra, shouldForwardProp, useColorModeValue } from '@chakra-ui/react';
+import { chakra, useColorModeValue } from '@chakra-ui/react';
 
 // Chakra factory component with Next js Image Component
 const ChakraNextImage = chakra(NextImage, {
@@ -19,6 +20,7 @@ const ChakraNextImage = chakra(NextImage, {
 });
 
 const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
+  const router = useRouter();
   const headingColor = useColorModeValue('primary.800', 'primary.300');
   const textColor = useColorModeValue('primary.800', 'primary.100');
 
@@ -70,6 +72,9 @@ const Hero = ({ title, subtitle, image, ctaLink, ctaText, ...rest }) => {
             px="4"
             lineHeight="1"
             size="md"
+            onClick={() => {
+              router.push(ctaLink);
+            }}
           >
             {ctaText}
           </Button>
@@ -116,9 +121,8 @@ Hero.defaultProps = {
   subtitle:
     'Retrieve articles and breaking news headlines from news sources and blogs across the web with NEWS API',
   image: '/news.jpg',
-  // image: '/machine.jpg',
   ctaText: 'Create your account now',
-  ctaLink: '/signup'
+  ctaLink: '/register'
 };
 
 export default Hero;
